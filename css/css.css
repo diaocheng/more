@@ -1,0 +1,32 @@
+*{
+	color: #000;
+	font-family:"Helvetica Neue", Helvetica, "Segoe UI", Arial, freesans, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+	line-height:1.6;
+}
+body{
+	margin: 0;
+	padding: 0;
+}
+h1,h2,h3,h4,h5,h6{
+	font-weight: normal;
+}
+.container{
+	width: 960px;
+	max-width: 100%;
+	margin: 0 auto;
+}
+.example{
+	padding: 7px;
+	border-radius: 3px;
+	box-shadow: 0 0 2px #f00;
+	border-left: 5px solid #ce4844;
+}
+pre{
+	padding: 20px;
+	box-shadow: 0 0 2px #f00;
+	border-radius: 3px;
+	font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
+	font-size: 14px;
+	background: #f7f7f7;
+	overflow: auto;
+}
