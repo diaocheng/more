@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>demo</title>
+	<link rel="stylesheet" type="text/css" href="css/css.css">
+	<script type="text/javascript" src="js/jquery-2.2.3.min.js"></script>
+	<script type="text/javascript" src="js/jquery.more.js"></script>
+	<style type="text/css">
+		body{
+			height: 1000px;
+		}
+	</style>
+</head>
+<body>
+<div class="container">
+<h1>加载更多插件</h1>
+<pre id="pre">
+<code>
+$(window).more({
+	disabled:false,
+	callback:function(more){
+		$.ajax({
+			url:"json.php",
+			type:"GET",
+			dataType:"json",
+			success:function(data){
+				if (data.rows.length>0) {
+					for (var i = 0; i < data.rows.length; i++) {
+						$("#more").before("&lt;h1&gt;&quot;+data.rows[i].id+&quot;. &quot;+data.rows[i].name+&quot;&lt;/h1&gt;");
+						more.animate.stop({disabled:false,text:"加载更多"});
+					}
+				}
+				else{
+					more.animate.stop({disabled:true,text:"没有更多了"});
+				}
+			},
+			error:function(e){
+				console.log(e);
+			}
+
+		});
+	}
+})
+</code></pre>
+<div class="example">
+<div id="more" data-target="more">加载更多</div>
+</div>
+</div>
+<script type="text/javascript">
+$(window).more({
+	disabled:false,
+	callback:function(more){
+		$.ajax({
+			url:"json.php",
+			type:"GET",
+			dataType:"json",
+			success:function(data){
+				if (data.rows.length>0) {
+					for (var i = 0; i < data.rows.length; i++) {
+						$("#more").before("<h1>"+data.rows[i].id+". "+data.rows[i].name+"</h1>");
+						more.animate.stop({disabled:false,text:"加载更多"});
+					}
+				}
+				else{
+					more.animate.stop({disabled:true,text:"没有更多了"});
+				}
+			},
+			error:function(e){
+				console.log(e);
+			}
+
+		});
+	}
+})
+</script>
+</body>
+</html>
