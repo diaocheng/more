@@ -36,11 +36,11 @@ $(window).more({
 				if (data.rows.length>0) {
 					for (var i = 0; i < data.rows.length; i++) {
 						$("#more").before("&lt;h1&gt;&quot;+data.rows[i].id+&quot;. &quot;+data.rows[i].name+&quot;&lt;/h1&gt;");
-						more.disabled({disabled:false,text:"加载更多"});
+						more.disabled(false);
 					}
 				}
 				else{
-					more.disabled({disabled:true,text:"没有更多了"});
+					more.disabled(true);
 				}
 			},
 			error:function(e){
