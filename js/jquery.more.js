@@ -55,7 +55,7 @@
                             //防止不能触发滚动
                             options.object.container.scrollTop(options.scrollTop - 5);
                             more.loading(options.animate);
-                            return options.callback(more.options);
+                            return options.callback(more.options.animate);
                         }
                     }
                 }
@@ -66,7 +66,7 @@
                 if (!more.options.disabled) {
                     more.options.disabled = true;
                     more.loading(options.animate);
-                    return options.callback(more.options);
+                    return options.callback(more.options.animate);
                 }
             });
         },
