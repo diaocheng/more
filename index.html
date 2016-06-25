@@ -2,13 +2,19 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<title>demo</title>
+	<title>加载更多插件</title>
 	<link rel="stylesheet" type="text/css" href="css/css.css">
 	<script type="text/javascript" src="js/jquery-2.2.3.min.js"></script>
 	<script type="text/javascript" src="js/jquery.more.js"></script>
 	<style type="text/css">
 		body{
 			height: 1000px;
+		}
+		.more{
+			text-align: center;
+			box-shadow: 0 0 10px #ccc;
+			padding: 10px;
+			cursor: pointer;
 		}
 	</style>
 </head>
@@ -17,6 +23,8 @@
 <h1>加载更多插件</h1>
 <pre id="pre">
 <code>
+//$(selector),more({});selector可为window和其他的元素
+//为window时为滚动加载，其他元素时为点击加载
 $(window).more({
 	disabled:false,
 	callback:function(more){
@@ -28,11 +36,11 @@ $(window).more({
 				if (data.rows.length>0) {
 					for (var i = 0; i < data.rows.length; i++) {
 						$("#more").before("&lt;h1&gt;&quot;+data.rows[i].id+&quot;. &quot;+data.rows[i].name+&quot;&lt;/h1&gt;");
-						more.animate.stop({disabled:false,text:"加载更多"});
+						more.disabled({disabled:false,text:"加载更多"});
 					}
 				}
 				else{
-					more.animate.stop({disabled:true,text:"没有更多了"});
+					more.disabled({disabled:true,text:"没有更多了"});
 				}
 			},
 			error:function(e){
@@ -44,11 +52,12 @@ $(window).more({
 })
 </code></pre>
 <div class="example">
-<div id="more" data-target="more">加载更多</div>
+<h1>点击下面按钮加载更多</h1>
+<div class ="more" data-target="more">加载更多</div>
 </div>
 </div>
 <script type="text/javascript">
-$(window).more({
+$(".more").more({
 	disabled:false,
 	callback:function(more){
 		$.ajax({
@@ -58,12 +67,12 @@ $(window).more({
 			success:function(data){
 				if (data.rows.length>0) {
 					for (var i = 0; i < data.rows.length; i++) {
-						$("#more").before("<h1>"+data.rows[i].id+". "+data.rows[i].name+"</h1>");
-						more.stop({disabled:false,text:"加载更多"});
+						$(".more").before("<h2>"+data.rows[i].id+". "+data.rows[i].name+"</h2>");
+						more.disabled(false);
 					}
 				}
 				else{
-					more.stop({disabled:true,text:"没有更多了"});
+					more.disabled(true);
 				}
 			},
 			error:function(e){
