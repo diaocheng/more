@@ -12,11 +12,11 @@
     				if (data.rows.length>0) {
     					for (var i = 0; i < data.rows.length; i++) {
     						$("#more").before("<h1>"+data.rows[i].id+". "+data.rows[i].name+"</h1>");
-    						more.animate.stop({disabled:false,text:"加载更多"});
+    						more.stop({disabled:false,text:"加载更多"});
     					}
     				}
     				else{
-    					more.animate.stop({disabled:true,text:"没有更多了"});
+    					more.stop({disabled:true,text:"没有更多了"});
     				}
     			},
     			error:function(e){
